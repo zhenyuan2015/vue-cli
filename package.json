@@ -29,7 +29,7 @@
     "lint": "eslint test/e2e/test*.js lib bin/* --env mocha",
     "e2e": "rimraf test/e2e/mock-template-build && mocha test/e2e/test.js --slow 1000",
     "postinstall": "cd ./src/server && npm install",
-    "postuninstall": "cd ./src/server && npm uninstall",
+    "postuninstall": "cd ./src/server && npm uninstall"
   },
   "dependencies": {
     "async": "^2.4.0",
