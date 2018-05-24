@@ -1,12 +1,12 @@
 {
-  "name": "vue-cli",
-  "version": "2.9.3",
-  "description": "A simple CLI for scaffolding Vue.js projects.",
+  "name": "visop",
+  "version": "0.0.3",
+  "description": "A simple CLI for scaffolding visible operation projects.",
   "preferGlobal": true,
   "bin": {
-    "vue": "bin/vue",
-    "vue-init": "bin/vue-init",
-    "vue-list": "bin/vue-list"
+    "visop": "bin/visop",
+    "visop-init": "bin/visop-init",
+    "visop-list": "bin/visop-list"
   },
   "repository": {
     "type": "git",
