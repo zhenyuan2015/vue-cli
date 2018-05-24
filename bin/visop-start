@@ -137,7 +137,7 @@ function runserver(){
   var serverdir = path.join(__dirname, '..','src','server')
   // console.log()
   shell.cd(serverdir);
-  watcher(`📦  Starting server  in ${serverdir}, this may take several minutes,you can visit localhost:8050 later...`, 'npm start');
+  watcher(`📦  Starting server  in ${serverdir}, this may take several minutes,you can visit localhost:8050 later...`, 'npm install && npm start');
 }
 
 function run () {
