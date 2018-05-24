@@ -1,7 +1,6 @@
 var _ = require('lodash');
 var validator = require('validator');
 var expressValidator = require('express-validator');
-var ZHYCD = require('../service/datas/ZHYCD');
 
 /**
  * 自定义验证
@@ -34,54 +33,6 @@ module.exports = function() {
                     return false;
                 }
                 return /^\d{4}(-)\d{2}(-)\d{2}$/.test(value); 
-            },
-            isyaoxing: function(value){
-                if(value === undefined){ return false; }
-                if(value == 100 || value == ""){
-                    return true;
-                }else{
-                    var valuenew = value.split(",");
-                    console.log(ZHYCD[0].jiedu.split(","));
-                    var yaoxing = ZHYCD[0].jiedu.split(",");
-                    var res = _.difference(valuenew,yaoxing);
-                    if(res[0]){
-                        return false;
-                    }else{
-                        return true;
-                    }
-                }
-            },
-            isgongxiao: function(value){
-                if(value === undefined){ return false; }
-                if(value == 100 || value == ""){
-                    return true;
-                }else{
-                    var valuenew = value.split(",");
-                    console.log(ZHYCD[1].jiedu.split(","));
-                    var gongxiao = ZHYCD[1].jiedu.split(",");
-                    var res = _.difference(valuenew,gongxiao);
-                    if(res[0]){
-                        return false;
-                    }else{
-                        return true;
-                    }
-                }
-            },
-            islaiyuan: function(value){
-                if(value === undefined){ return false; }
-                if(value == 100 || value == ""){
-                    return true;
-                }else{
-                    var valuenew = value.split(",");
-                    console.log(ZHYCD[2].jiedu.split(","));
-                    var laiyuan = ZHYCD[2].jiedu.split(",");
-                    var res = _.difference(valuenew,laiyuan);
-                    if(res[0]){
-                        return false;
-                    }else{
-                        return true;
-                    }
-                }
             },
             isDateTime: function(value){ 
                 // console.log(new Date(value).toString());判断是否是有效的日期。
