@@ -10,19 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue-cli.git"
+    "url": "git+https://github.com/zhenyuan2015/visop"
   },
   "keywords": [
     "vue",
+    "visop",
     "cli",
     "spa"
   ],
-  "author": "Evan You",
+  "author": "zhenyuan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vue-cli/issues"
+    "url": "https://github.com/zhenyuan2015/visop/issues"
   },
-  "homepage": "https://github.com/vuejs/vue-cli#readme",
+  "homepage": "https://github.com/zhenyuan2015/visop#readme",
   "scripts": {
     "test": "npm run lint && npm run e2e",
     "lint": "eslint test/e2e/test*.js lib bin/* --env mocha",
