@@ -12,7 +12,7 @@ var cookieParser = require('cookie-parser'); // 加密cookie
 var validator = require('./validator-config'); //配置参数校验中间件
 var bodyParser = require('body-parser');
 var express = require('express');
-var ejs = require('ejs');
+// var ejs = require('ejs');
 // var rbac = require('../middleware/rbac');
 var jwt = require('express-jwt');
 // var tokenManager = require('./token_manager');
@@ -32,8 +32,8 @@ module.exports = function(app) {
     // view engine setup  设置模板引擎
     app.use(compression()); // 对返回response做gzip压缩,需要放到所有请求开始以前
     app.set('views', path.join(__dirname, "..", 'views'));
-    app.engine('html', ejs.__express);
-    app.set('view engine', 'html');
+    // app.engine('html', ejs.__express);
+    // app.set('view engine', 'html');
 
 
     //设置请求头  TODO 需要隐藏来源信息
