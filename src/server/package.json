@@ -23,6 +23,7 @@
     "gulp": "^3.9.1",
     "gulp-watch": "^4.3.11",
     "isemail": "^2.2.1",
+    "json-server": "^0.12.2",
     "jsonwebtoken": "^7.2.1",
     "jwa": "^1.1.5",
     "lodash": "^4.17.2",

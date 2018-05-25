@@ -26,7 +26,7 @@ global.requireDao = require('./utils/requireDao'); // 全局引用dao的函数
 // var ejs = require('ejs');
 
 var setting = require('./config/setting'); // 自己定义的全局变量
-
+setting.CODE_PATH = process.env.CODE_PATH; // 配置文件所在根目录
 
 // var mysql = require('mysql');
 // mysql._format = mysql.format;
@@ -136,6 +136,7 @@ app.use(function(req, res, next){
 //批量配置路由-z
 require('./utils/config-route')(app);
 
+require('./utils/json-server')(app);
 
 
 // // 加载API目录

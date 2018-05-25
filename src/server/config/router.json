@@ -40,5 +40,61 @@
                 "errorMessage": "config不能为空"
             }
         }
+    },
+    "getAllConfigs": {
+        "route": "getAllConfigs",
+        "method": "GET,POST",
+        "description": "增加路由",
+        "authority": "100000",
+        "controller": "api/getAllConfigs",
+        "action": "do",
+        "parameters": {
+            "config": {
+                "notEmpty": true,
+                "errorMessage": "config不能为空"
+            }
+        }
+    },
+    "getConfig": {
+        "route": "getConfig",
+        "method": "GET,POST",
+        "description": "增加路由",
+        "authority": "100000",
+        "controller": "api/getConfig",
+        "action": "do",
+        "parameters": {
+            "config": {
+                "notEmpty": true,
+                "errorMessage": "config不能为空"
+            }
+        }
+    },
+    "setConfig": {
+        "route": "setConfig",
+        "method": "GET,POST",
+        "description": "增加路由",
+        "authority": "100000",
+        "controller": "api/setConfig",
+        "action": "do",
+        "parameters": {
+            "config": {
+                "notEmpty": true,
+                "errorMessage": "config不能为空"
+            }
+        }
+    },
+    "deleteConfig": {
+        "route": "deleteConfig",
+        "method": "GET,POST",
+        "description": "增加路由",
+        "authority": "100000",
+        "controller": "api/deleteConfig",
+        "action": "do",
+        "parameters": {
+            "config": {
+                "notEmpty": true,
+                "errorMessage": "config不能为空"
+            }
+        }
     }
 }
