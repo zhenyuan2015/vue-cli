@@ -1,9 +1,9 @@
 'use strict';
 
-var mysql = require('../utils/mysql')
+// var mysql = require('../utils/mysql')
 var returnFactory = require('../utils/returnFactory');
 // var userDao = require('../dao/user');  // 需要修改为正确的dao层
-var userDao = requireDao('user');  // 需要修改为正确的dao层
+// var userDao = requireDao('user');  // 需要修改为正确的dao层
 
 var visibleTool = require('../generator/deleteRouteM');
 var getAllRoutes = require('./getAllRoutes').getAllRoutes;

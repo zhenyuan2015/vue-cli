@@ -133,10 +133,50 @@ app.use(function(req, res, next){
 
 // ********************************************************
 // 加载API模块
+var router = express.Router();
 //批量配置路由-z
-require('./utils/config-route')(app);
+router = require('./utils/config-route')(router);
 
-require('./utils/json-server')(app);
+var visopHooks = {}; // 元素触发的钩子函数，定义在用户代码目录
+require('./utils/json-server')(router, visopHooks);
+
+
+app.use((req, res, next) => {
+    console.log('before............', req.path,req.method)
+    // var visopHook = require("")
+    var configName = req.path.split("/")[1];
+    if(!visopHooks[configName]){
+        return next()
+    }
+
+    if(req.method == "POST"){
+        // console.log('req.body', req.body, visopHooks[configName]["beforeAdd"])
+        visopHooks[configName]["beforeAdd"](req.body, function(err, data){
+            if(err){
+                return next(err)
+            }
+        })
+    }
+    if(req.method == "PATCH"){
+        visopHooks[configName]["beforeUpdate"](req.params.id, req.body, function(err, data){
+            if(err){
+                return next(err)
+            }
+        })
+    }
+    if(req.method == "DELETE"){
+        visopHooks[configName]["beforeDelete"](req.params.id, req.body, function(err, data){
+            if(err){
+                return next(err)
+            }
+        })
+    }
+    // if(req.baseUrl.replace('/','') == )
+
+    return next()
+  })
+
+app.use(router)
 
 
 // // 加载API目录

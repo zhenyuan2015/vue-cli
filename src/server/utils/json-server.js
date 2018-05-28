@@ -10,24 +10,44 @@ var fs = require('fs-extra');
 var path = require('path');
 var setting = require('../config/setting');
 var processCwd = __dirname; // 脚本 根目录
+// var router = require('express').Router();
 
-
-module.exports = function(app){
+module.exports = function(router, visopHooks){
     // var router = app.Router;
     var codePath = setting.CODE_PATH
     if(!codePath){
         codePath = path.resolve(process.cwd())
     }
+    var visopPath = path.join(codePath, 'visop');
     console.log('codePath,',codePath)
-    var allFiles = fs.readdirSync(path.resolve(process.cwd()));
+    var allFiles = fs.readdirSync(visopPath);
+    // var visopHooks = {};
+    var tempfile, fullpath;
     allFiles.forEach(function(file){
-        if(file.endsWith(".json")){
-            try{
-                app.use(jsonServer.router(path.join(codePath, file)))
+        fullpath = path.join(visopPath, file)
+        if(file.endsWith(".json") && file != "package.json"){
+            try {
+                console.log('add router for ',file.replace('.json', ''),' ',  fullpath)
+                // console.log(jsonServer.router(path.join(codePath, file)))
+                router.use("/"+file.replace('.json', ''), jsonServer.router(fullpath))
             }
             catch(e){
-                console.log('err:',e," when add router for:",path.join(codePath, file))
+                console.log('err:',e," when add router for:",fullpath)
             }
         }
+        if(file.endsWith(".js")){
+            try{
+                tempfile = file.replace('.js', '') 
+                visopHooks[tempfile] = require(fullpath);
+            }
+            catch(e){
+                console.log(`add hooks for ${fullpath} failed: ${e}`)
+            }
+            
+        }
     })
+    return {
+        router,
+        visopHooks
+    }
 };

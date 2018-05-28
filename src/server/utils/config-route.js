@@ -6,13 +6,14 @@ var jwt = require('express-jwt');
 // var tokenManager = require('./token_manager');
 var setting = require('../config/setting');
 var routeMap = require('../config/router.json');
-var router = require('express').Router();
+// var router = require('express').Router();
 var rbac = require('./rbac');
 var log = require('./log');                 // 加载日志
 var sanitize = require('./sanitize.js');
 var checkValidate = require('./checkValidate.js');
 var _ = require('lodash')
 // var checkLogin = require('./checkLogin').checkLogin; 
+var path = require('path')
 
 var jwtOptions = {
         secret: setting.secretToken,
@@ -27,7 +28,7 @@ function isRevokedCallback(req, payload, done){
     console.log("1");
 }
 
-module.exports = function(app){
+module.exports = function(router){
     // var router = app.Router;
     //遍历路由配置文件，动态生成route
     _.forOwn(routeMap, function(obj, key){
@@ -38,7 +39,9 @@ module.exports = function(app){
        var action = obj.action;
        //根据配置中的权限是否为空来判断是否添加鉴权中间件
        try{
-        var controller = require('../' + obj.controller);
+           var controllerPath = path.resolve(path.join('.','api',obj.route))
+           console.log(controllerPath)
+        var controller = require(controllerPath);
         console.log(route, obj.controller, action);
         router.get('/'+route, sanitize, checkValidate , controller[action]);   
         router.post('/'+route, sanitize, checkValidate ,  controller[action]);   
@@ -69,5 +72,6 @@ module.exports = function(app){
        }
         
     })
-    app.use(router);
+    // app.use(router);
+    return router;
 };

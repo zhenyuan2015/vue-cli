@@ -1,9 +1,9 @@
 'use strict';
 
-var mysql = require('../utils/mysql')
+// var mysql = require('../utils/mysql')
 var returnFactory = require('../utils/returnFactory');
 // var user_tDao = require('../dao/user_t');  // 需要修改为正确的dao层
-var userDao = requireDao('user');  // 需要修改为正确的dao层
+// var userDao = requireDao('user');  // 需要修改为正确的dao层
 var fs = require('fs-extra');
 var path = require('path');
 var processCwd = __dirname; // 脚本 根目录
